@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class FibonacciChecker {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Solicitar o número do usuário
+        System.out.print("Digite um número para verificar se pertence à sequência de Fibonacci: ");
+        int number = scanner.nextInt();
+        
+        // Verificar se o número está na sequência de Fibonacci
+        if (isFibonacci(number)) {
+            System.out.println(number + " pertence à sequência de Fibonacci.");
+        } else {
+            System.out.println(number + " NÃO pertence à sequência de Fibonacci.");
+        }
+    }
+
+    // Método para verificar se o número pertence à sequência de Fibonacci
+    public static boolean isFibonacci(int number) {
+        int num1 = 0, num2 = 1;
+        
+        if (number == num1 || number == num2) {
+            return true; // Caso o número seja 0 ou 1, ele já está na sequência
+        }
+        
+        int nextNum = num1 + num2;
+        while (nextNum <= number) {
+            if (nextNum == number) {
+                return true; // Se o número for encontrado na sequência, retorna verdadeiro
+            }
+            num1 = num2;
+            num2 = nextNum;
+            nextNum = num1 + num2; // Próximo número da sequência
+        }
+        
+        return false; // Se o número não for encontrado, retorna falso
+    }
+}
